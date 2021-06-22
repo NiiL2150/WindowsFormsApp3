@@ -51,6 +51,7 @@ namespace WindowsFormsApp3
             this.button0 = new System.Windows.Forms.Button();
             this.buttonNegative = new System.Windows.Forms.Button();
             this.buttonPeriod = new System.Windows.Forms.Button();
+            this.buttonClearLast = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxCalc
@@ -85,11 +86,11 @@ namespace WindowsFormsApp3
             // 
             // buttonClearAll
             // 
-            this.buttonClearAll.Location = new System.Drawing.Point(73, 50);
+            this.buttonClearAll.Location = new System.Drawing.Point(109, 50);
             this.buttonClearAll.Name = "buttonClearAll";
-            this.buttonClearAll.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearAll.Size = new System.Drawing.Size(39, 23);
             this.buttonClearAll.TabIndex = 3;
-            this.buttonClearAll.Text = "CE";
+            this.buttonClearAll.Text = "C";
             this.buttonClearAll.UseVisualStyleBackColor = true;
             this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
             // 
@@ -274,11 +275,22 @@ namespace WindowsFormsApp3
             this.buttonPeriod.Text = ",";
             this.buttonPeriod.UseVisualStyleBackColor = true;
             // 
+            // buttonClearLast
+            // 
+            this.buttonClearLast.Location = new System.Drawing.Point(73, 50);
+            this.buttonClearLast.Name = "buttonClearLast";
+            this.buttonClearLast.Size = new System.Drawing.Size(39, 23);
+            this.buttonClearLast.TabIndex = 22;
+            this.buttonClearLast.Text = "CE";
+            this.buttonClearLast.UseVisualStyleBackColor = true;
+            this.buttonClearLast.Click += new System.EventHandler(this.buttonClearLast_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(293, 155);
+            this.Controls.Add(this.buttonClearLast);
             this.Controls.Add(this.buttonPeriod);
             this.Controls.Add(this.buttonNegative);
             this.Controls.Add(this.button0);
@@ -334,6 +346,7 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.Button button0;
         private System.Windows.Forms.Button buttonNegative;
         private System.Windows.Forms.Button buttonPeriod;
+        private System.Windows.Forms.Button buttonClearLast;
     }
 }
 

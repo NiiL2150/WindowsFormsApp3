@@ -110,5 +110,10 @@ namespace WindowsFormsApp3
             Button button = sender as Button;
             textBoxTotal.Text = textBoxTotal.Text == "0" || textBoxTotal.Text == "" ? button.Text : textBoxTotal.Text + button.Text;
         }
+
+        private void buttonClearLast_Click(object sender, EventArgs e)
+        {
+            textBoxTotal.Text = "";
+        }
     }
 }
