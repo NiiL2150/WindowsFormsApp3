@@ -108,14 +108,7 @@ namespace WindowsFormsApp3
         void numericButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            if(textBoxTotal.Text == "0" || textBoxTotal.Text == "")
-            {
-                textBoxTotal.Text = button.Text;
-            }
-            else
-            {
-                textBoxTotal.Text += button.Text;
-            }
+            textBoxTotal.Text = textBoxTotal.Text == "0" || textBoxTotal.Text == "" ? button.Text : textBoxTotal.Text + button.Text;
         }
     }
 }
