@@ -60,7 +60,7 @@ namespace WindowsFormsApp3
             this.textBoxCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCalc.Location = new System.Drawing.Point(0, 0);
             this.textBoxCalc.Name = "textBoxCalc";
-            this.textBoxCalc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxCalc.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxCalc.Size = new System.Drawing.Size(294, 20);
             this.textBoxCalc.TabIndex = 0;
             // 
@@ -70,19 +70,19 @@ namespace WindowsFormsApp3
             this.textBoxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxTotal.Location = new System.Drawing.Point(0, 19);
             this.textBoxTotal.Name = "textBoxTotal";
-            this.textBoxTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxTotal.Size = new System.Drawing.Size(294, 32);
             this.textBoxTotal.TabIndex = 1;
             // 
             // buttonPercent
             // 
-            this.buttonPercent.Enabled = false;
             this.buttonPercent.Location = new System.Drawing.Point(0, 50);
             this.buttonPercent.Name = "buttonPercent";
             this.buttonPercent.Size = new System.Drawing.Size(75, 23);
             this.buttonPercent.TabIndex = 2;
             this.buttonPercent.Text = "%";
             this.buttonPercent.UseVisualStyleBackColor = true;
+            this.buttonPercent.Click += new System.EventHandler(this.buttonEquals_Click);
             // 
             // buttonClearAll
             // 
@@ -96,13 +96,13 @@ namespace WindowsFormsApp3
             // 
             // buttonClear
             // 
-            this.buttonClear.Enabled = false;
             this.buttonClear.Location = new System.Drawing.Point(146, 50);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "<--";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonDivision
             // 
@@ -256,7 +256,6 @@ namespace WindowsFormsApp3
             // 
             // buttonNegative
             // 
-            this.buttonNegative.Enabled = false;
             this.buttonNegative.Location = new System.Drawing.Point(0, 133);
             this.buttonNegative.Name = "buttonNegative";
             this.buttonNegative.Size = new System.Drawing.Size(75, 23);
@@ -267,13 +266,13 @@ namespace WindowsFormsApp3
             // 
             // buttonPeriod
             // 
-            this.buttonPeriod.Enabled = false;
             this.buttonPeriod.Location = new System.Drawing.Point(146, 133);
             this.buttonPeriod.Name = "buttonPeriod";
             this.buttonPeriod.Size = new System.Drawing.Size(75, 23);
             this.buttonPeriod.TabIndex = 21;
             this.buttonPeriod.Text = ",";
             this.buttonPeriod.UseVisualStyleBackColor = true;
+            this.buttonPeriod.Click += new System.EventHandler(this.buttonPeriod_Click);
             // 
             // buttonClearLast
             // 

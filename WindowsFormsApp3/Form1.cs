@@ -14,13 +14,20 @@ namespace WindowsFormsApp3
     {
         public delegate double Calculate(double n1, double n2);
         public event Calculate CalcEvent;
-        double temp;
+        double? temp;
 
         void ClearEvent()
         {
-            foreach (Delegate d in CalcEvent.GetInvocationList())
+            try
             {
-                CalcEvent -= (Calculate)d;
+                foreach (Delegate d in CalcEvent.GetInvocationList())
+                {
+                    CalcEvent -= (Calculate)d;
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -65,15 +72,20 @@ namespace WindowsFormsApp3
 
         private void buttonEquals_Click(object sender, EventArgs e)
         {
-            char ch = textBoxCalc.Text[0];
+            if((sender as Button).Text == "%")
+            {
+                textBoxTotal.Text = (Double.Parse(textBoxTotal.Text) / 100).ToString();
+            }
+            char ch = textBoxCalc.Text[textBoxCalc.Text.Length - 1];
             textBoxCalc.Text = temp.ToString() + ch + textBoxTotal.Text;
-            textBoxTotal.Text = (CalcEvent.Invoke(temp, Double.Parse(textBoxTotal.Text))).ToString();
+            textBoxTotal.Text = textBoxTotal.Text == "" ? textBoxTotal.Text : (CalcEvent.Invoke(temp ?? 0, Double.Parse(textBoxTotal.Text))).ToString();
             ClearEvent();
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
+            ClearEvent();
             switch (button.Text)
             {
                 case "+":
@@ -89,9 +101,30 @@ namespace WindowsFormsApp3
                     CalcEvent += Div;
                     break;
             }
-            temp = Double.Parse(textBoxTotal.Text);
-            textBoxCalc.Text = button.Text + textBoxTotal.Text;
-            textBoxTotal.Text = "";
+            try
+            { 
+                double tmptmptmp = Double.Parse(textBoxTotal.Text);
+                temp = tmptmptmp;
+            }
+            catch(Exception) { }
+            finally
+            {
+                if (textBoxCalc.Text.Length > 0)
+                {
+                    if (textBoxCalc.Text[textBoxCalc.Text.Length - 1] == '+' ||
+                        textBoxCalc.Text[textBoxCalc.Text.Length - 1] == '-' ||
+                        textBoxCalc.Text[textBoxCalc.Text.Length - 1] == '*' ||
+                        textBoxCalc.Text[textBoxCalc.Text.Length - 1] == '/')
+                    {
+                        if (textBoxTotal.Text == "")
+                        {
+                            textBoxTotal.Text = textBoxCalc.Text.Substring(0, textBoxCalc.Text.Length - 1);
+                        }
+                    }
+                }
+                textBoxCalc.Text = textBoxTotal.Text + button.Text;
+                textBoxTotal.Text = "";
+            }
         }
 
         private void buttonClearAll_Click(object sender, EventArgs e)
@@ -114,6 +147,19 @@ namespace WindowsFormsApp3
         private void buttonClearLast_Click(object sender, EventArgs e)
         {
             textBoxTotal.Text = "";
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxTotal.Text = textBoxTotal.Text.Length > 0 ? textBoxTotal.Text.Substring(0, textBoxTotal.Text.Length - 1) : "";
+        }
+
+        private void buttonPeriod_Click(object sender, EventArgs e)
+        {
+            if (!textBoxTotal.Text.Contains(',') && textBoxTotal.Text.Length > 0)
+            {
+                textBoxTotal.Text += ',';
+            }
         }
     }
 }
